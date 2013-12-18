@@ -1,0 +1,33 @@
+Assessment of variant information content (VIC) requires one input file with the following format
+
+-----Example input file for vic_analysis.py (note: the file is tab-delimited)-----
+
+# Comments are ignored
+# First line will be the header
+
+Chromosome	Start	End	Name of region(e.g. gene)	Feature1	Feature2:float	...
+chr14		1232	1234	ACTN2				intronic	0.4
+(or simply 14)
+
+
+---------
+
+
+The first 4 columns are obligatory, the rest is optional (although you will of course want to
+have at least one feature). Each feature is treated as a categorical variable unless otherwise
+specified (:type, types include str, int, and float). 
+
+
+-----Example output files for vic_analysis.py----
+-----Feature profile file-----
+ACTN2	intronic,0.5:0.5 intronic,0.3:0.3 exonic,0.3:0.2
+...
+-----variant information content file----
+chr14		1232	1234	ACTN2	3.45
+....
+-----
+
+
+The feature profile file describes frequencies for feature combinations in the format feature1,feature2,...:frequence feature1,feature2....:frequency... (notice the spaces separating each combination)
+The variant information content file has each chromosome coordinate and region plus their vic score.
+
